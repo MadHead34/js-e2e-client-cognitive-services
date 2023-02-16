@@ -1,6 +1,7 @@
 // ./src/App.js
 
 import React, { useState } from 'react';
+import axios from 'axios';
 import './App.css';
 import { computerVision, isConfigured as ComputerVisionIsConfigured } from './azure-cognitiveservices-computervision';
 
@@ -26,6 +27,13 @@ function App() {
       setProcessing(false);
     });
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      axios.get(analysis.URL).then((response) => {
+        SVGTextPositioningElement(response.data);
+      });
+    }, []);
+
   };
 
   // Display JSON data in readable format
@@ -46,7 +54,7 @@ function App() {
   const Analyze = () => {
     return (
     <div>
-      <h1 class="relative w-full flex-none mb-2 text-2xl font-semibold text-red">Analyze image</h1>
+      <h1 class="relative w-full flex-none mb-2 text-2xl font-semibold text-black">Analyze image</h1>
       {!processing &&
         <div>
           <div>
