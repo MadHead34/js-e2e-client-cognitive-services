@@ -46,7 +46,7 @@ function App() {
   const Analyze = () => {
     return (
     <div>
-      <h1>Analyze image</h1>
+      <h1 class="relative w-full flex-none mb-2 text-2xl font-semibold text-red">Analyze image</h1>
       {!processing &&
         <div>
           <div>
